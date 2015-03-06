@@ -1,0 +1,58 @@
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+
+html {
+  font-size: 80%;
+}
+.container {
+	width: @screen-sm-min;
+}
+.logo { 
+	margin-top: 0.2rem;
+	width: 216px;
+}
+.menu_wrap {
+	height: 3.125rem;
+}
+.menu {
+	padding-top: 0;
+    display: block;
+    float: right;
+    a {
+    	text-decoration: none;
+    }
+	.active a,
+	a:hover {
+	    color: #030303;
+	}
+	> .menu_item {
+	    float: left;
+	    position: relative;
+	    > a {
+		    font-size: 1.125rem;
+		    border-bottom: none;
+		    white-space: nowrap;
+		    padding: 0.75rem 1rem;
+		}
+	}
+}
+// Меню второй уровень
+.menu_inner {
+	position: absolute;
+	background: @link-color;
+	left: 0;
+	top: 100%;
+	> .menu_item {
+	    > a {
+		    font-size: 1.10rem;
+		    white-space: nowrap;
+		    padding: 0.5rem 1rem;
+		    text-align: left;
+		}
+	}
+}
+.menu_btn {
+	display: none;
+}
+// End  
+}

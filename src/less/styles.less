@@ -1,0 +1,25 @@
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
+
+// Reset and dependencies
+@import "normalize.less";
+
+// Font Awesome
+@import "fontawesome/font-awesome.less";
+
+// Reset the box-sizing
+* {
+  .box-sizing(border-box);
+}
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+//
+// Главная страница
+//---------------------------
+@import "phone.less";
+@import "tablet.less";
+@import "desktop.less";

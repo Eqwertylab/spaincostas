@@ -12,6 +12,7 @@ html {
 	width: 216px;
 }
 .menu_wrap {
+	min-height: 3.125rem;
 	height: 3.125rem;
 }
 .menu {
@@ -33,6 +34,7 @@ html {
 		    border-bottom: none;
 		    white-space: nowrap;
 		    padding: 0.75rem 1rem;
+		    height: 3.125rem;
 		}
 	}
 }
@@ -54,5 +56,46 @@ html {
 .menu_btn {
 	display: none;
 }
+
+
+
+//
+// Banner
+//---------------------------
+.slide_caption {
+	display: inline-block;
+    text-align: left;
+    right: 15px;
+    left: auto;
+}
+
+
+
+//
+// Form
+//---------------------------
+.header_wrap {
+	height: 31.25rem;
+}
+.hfilter_wrap {
+	position: absolute;
+	top: 50%;
+	z-index: 200;
+	width: 100%;
+}
+.hfilter {
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 92%;
+}
+.form.__horizontal {
+    .form_item {
+        float: left;
+        &+.form_item {
+        	padding-left: 0.5rem;
+        }
+    }
+}
+
 // End  
 }

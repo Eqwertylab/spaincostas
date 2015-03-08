@@ -26,12 +26,14 @@
     <div class="container">
 
       <span class="logo"></span>
-
+      
+      <!-- ВЫБОР ЯЗЫКА -->
       <select name="" id="lang">
         <option value="ru" data-class="lang_ico __ru" selected="selected">RU</option>
         <option value="en" data-class="lang_ico __en">EN</option>
         <option value="es" data-class="lang_ico __es">ES</option>
       </select>
+      <!-- / ВЫБОР ЯЗЫКА -->
 
       <!-- КНОПКА РАСКРЫТИЯ МЕНЮ -->
       <button class="menu_btn" id="menu_btn">
@@ -71,6 +73,114 @@
     </div>
   </nav>
   <!-- ГЛАВНОЕ МЕНЮ -->
+
+
+  <!-- ЗАГОЛОВОК САЙТА -->
+  <header class="header_wrap">
+
+    <!-- ГОЛОВНОЙ ФИЛЬТЕР -->
+    <div class="hfilter_wrap">
+      <div class="container">
+        <div class="hfilter">
+          <form action="" class="form __horizontal">
+            <div class="form_item hfilter_city">
+              <select name="" id="" class="form_control">
+                <option value="">Гольф Пералада</option>
+                <option value="">Барселона</option>
+                <option value="">Кастельдефельс</option>
+                <option value="">Плайа де Кастельдефельс</option>
+                <option value="">Гава</option>
+                <option value="">Порт де ла Сельва</option>
+                <option value="">Калелья</option>
+                <option value="">Ситжес</option>
+              </select>
+            </div>
+            <div class="form_item hfilter_arrival">
+              <input type="text" class="form_control" id="hfilter-arrival">
+            </div>
+            <div class="form_item hfilter_exit">
+              <input type="text" class="form_control" id="hfilter-exit">
+            </div>
+            <div class="form_item hfilter_count">
+              <select name="" id="" class="form_control" id="hfilter-count">
+                <option value="1">1 гость</option>
+                <option value="2">2 гостя</option>
+                <option value="3">3 гостя</option>
+                <option value="4">4 гостя</option>
+                <option value="5">5 гостей</option>
+                <option value="6">6 гостей</option>
+                <option value="7">7 гостей</option>
+                <option value="8">8 гостей</option>
+                <option value="9">9 гостей</option>
+                <option value="10">10 гостей</option>
+                <option value="11">11 гостей</option>
+                <option value="12">12 гостей</option>
+                <option value="13">13 гостей</option>
+                <option value="14">14 гостей</option>
+                <option value="15">15+ гостей</option>
+              </select>
+            </div>
+            <div class="form_item hfilter_button">
+              <input type="submit" class="btn __warning" value="Начать поиск">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- / ГОЛОВНОЙ ФИЛЬТЕР -->
+
+    <!-- БАННЕР -->
+    <section class="section banner">
+      <div class="container __wide">
+        <div class="slider">
+          <ul class="slides">
+
+            <!-- СЛАЙД 1 -->
+            <li class="slide active">
+              <div class="slide_content" style="background-image: url(img/slides/slide1.jpg);">
+                <div class="slide_container">
+                  <div class="slide_caption">
+                    <span class="slide_name">Вилла у Cafe Del Mar</span>
+                    <span class="slide_location">Испания, Costa Blanca - 5 763р</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- / СЛАЙД 1 -->
+
+            <!-- СЛАЙД 2 -->
+            <li class="slide">
+              <div class="slide_content" style="background-image: url(img/slides/slide2.jpg);">
+                <div class="slide_container">
+                  <div class="slide_caption">
+                    <span class="slide_name">Дом Mediterranea в Calpe Calp</span>
+                    <span class="slide_location">Испания, Costa Blanca - 2 987р</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- / СЛАЙД 2 -->
+
+          </ul>
+          <ul class="control_nav">
+            <li class="active"></li>
+            <li></li>
+          </ul>
+          
+          <div class="slide_container direction_nav_wrap">
+            <ul class="direction_nav">
+              <li class="before"></li>
+              <li class="next"></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- / БАННЕР -->
+
+  </header>
+  <!-- ЗАГОЛОВОК САЙТА -->
 
 <!-- Scripts -->
 <script data-main="js/main.js" src="js/require.js"></script>

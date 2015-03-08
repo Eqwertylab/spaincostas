@@ -3,29 +3,35 @@ html {
   min-width: 320px;
 }
 body {
-	font-family: 'Open Sans', sans-serif;
+    font-family: @font;
 }
 .container {
-	padding: 0 10px;
-	margin: auto;
+    padding: 0 10px;
+    margin: auto;
+}
+.container.__wide {
+    width: 100%;
+    padding: 0;
 }
 
 //
 // Main menu
 //---------------------------
 .logo {
-	display: block;
-	width: 140px;
-	height: 34px;
-	margin-top: 3px;
-	float: left;
-	background: url(../img/logo.png) no-repeat left top;
-	background-size: contain;
-	margin-top: 8px;
+    display: block;
+    width: 140px;
+    height: 34px;
+    margin-top: 3px;
+    float: left;
+    background: url(../img/logo.png) no-repeat left top;
+    background-size: contain;
+    margin-top: 8px;
 }
 .menu_wrap {
-	background: #fff;
-	min-height: 42px;
+    background: #fff;
+    min-height: 42px;
+    position: relative;
+    z-index: 200; 
 }
 
 // Меню первый уровень
@@ -36,44 +42,44 @@ body {
     display: none;
 
     &.__open {
-	    display: block;
-	}
+        display: block;
+    }
 
-	a {
-	    color: #030303;
-	    text-decoration: none;
-	    font-size: 2rem;
-	    display: block;
-	    text-align: center;
-	    border-bottom: 1px solid lighten(@link-color, 10%);
-	    padding: 0.3rem;
-	}
+    a {
+        color: #030303;
+        text-decoration: none;
+        font-size: 2rem;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid lighten(@link-color, 10%);
+        padding: 0.3rem;
+    }
 
-	.menu_item.__open,
-	.menu_item.__active,
-	.menu_item:hover {
-		background: @link-color;
-	}
-	
-	.__open > .menu_inner {
-		display: block;
-	}
+    .menu_item.__open,
+    .menu_item.__active,
+    .menu_item:hover {
+        background: @link-color;
+    }
+    
+    .__open > .menu_inner {
+        display: block;
+    }
 }
 
 // Меню второй уровень
 .menu_inner {
-	display: none;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 
-	a {
-		font-size: 1.5rem;
-	}
-	.menu_item.__active,
-	.menu_item:hover {
-		background: darken(@link-color, 5%);
-	}
+    a {
+        font-size: 1.5rem;
+    }
+    .menu_item.__active,
+    .menu_item:hover {
+        background: darken(@link-color, 5%);
+    }
 
 }
 .menu_btn {
@@ -84,19 +90,19 @@ body {
     float: right;
     padding: 12px 5px;
 
-	span {
-	    display: block;
-	    background: @link-color;
-	    border-radius: 5px;
-	    height: 4px;
-	}    
-	span + span {
-	    margin-top: 3px;
-	}
-	&.__open span {
-	    background: lighten(@link-color, 10%);
-	    box-shadow: inset 0 0 3px rgba(0,0,0,0.2);
-	}
+    span {
+        display: block;
+        background: @link-color;
+        border-radius: 5px;
+        height: 4px;
+    }    
+    span + span {
+        margin-top: 3px;
+    }
+    &.__open span {
+        background: lighten(@link-color, 10%);
+        box-shadow: inset 0 0 3px rgba(0,0,0,0.2);
+    }
 }
 
 
@@ -104,69 +110,229 @@ body {
 // Select language
 //---------------------------
 #lang-button {
-	font-size: 0.875rem;
-	margin: 0.6rem 0 0 2.5rem;
-	
-	.ui-icon-triangle-1-s {
-		right: 8px;
-		text-indent: 0;
-		margin-top: -0.4375rem;
-		.fa-icon();
-		&:before {
-			content: @fa-var-angle-down;
-		}
-	}
+    font-size: 0.875rem;
+    margin: 0.6rem 0 0 2.5rem;
+    float: left;
+    
+    .ui-icon-triangle-1-s {
+        right: 8px;
+        text-indent: 0;
+        margin-top: -0.4375rem;
+        .fa-icon();
+        &:before {
+            content: @fa-var-angle-down;
+        }
+    }
 
-	&.ui-selectmenu-button span.lang_ico {
-		left: 3px;
-	}
-	&.ui-selectmenu-button span.ui-selectmenu-text {
-		padding: 0.4rem 15px 0.4rem 20px; 
-	}
-	.lang_ico {
-		margin-top: -7px;
-	}
+    &.ui-selectmenu-button span.lang_ico {
+        left: 3px;
+    }
+    &.ui-selectmenu-button span.ui-selectmenu-text {
+        padding: 0.4rem 15px 0.4rem 20px; 
+    }
+    .lang_ico {
+        margin-top: -7px;
+    }
 }
 .lang-menu {
-	font-size: 0.875rem;
-	border: 1px solid @light-gray;
-	border-radius: 5px;
-	background: #ffffff;
-	padding-bottom: 0 !important;
+    font-size: 0.875rem;
+    border: 1px solid @light-gray;
+    border-radius: 5px;
+    background: #ffffff;
+    padding-bottom: 0 !important;
 
-	.ui-state-focus,
-	.ui-state-active {
-		margin: 0;
-	}
-	.ui-menu-item {
-		padding: 5px 5px 5px 20px;
+    .ui-state-focus,
+    .ui-state-active {
+        margin: 0;
+    }
+    .ui-menu-item {
+        padding: 5px 5px 5px 20px;
 
-		&+.ui-menu-item {
-			border-top: 1px solid @light-gray;
-		}
+        &+.ui-menu-item {
+            border-top: 1px solid @light-gray;
+        }
 
-		&:hover {
-			background: @link-color;
-		}
-	}
+        &:hover {
+            background: @link-color;
+        }
+    }
 }
 .lang_ico {
-	background-position: center center;
-	background-repeat: no-repeat;
-	height: 16px;
-	width: 16px;
-	top: 0.1rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    top: 0.1rem;
 
-	&.__ru {
-		background-image: url(../img/flags/RU.png);	
-	}
-	&.__en {
-		background-image: url(../img/flags/GB.png);	
-	}
-	&.__es {
-		background-image: url(../img/flags/ES.png);	
-	}
-	
+    &.__ru {
+        background-image: url(../img/flags/RU.png); 
+    }
+    &.__en {
+        background-image: url(../img/flags/GB.png); 
+    }
+    &.__es {
+        background-image: url(../img/flags/ES.png); 
+    }
+    
 }
 
 
+//
+// Banner
+//---------------------------
+.banner {
+    position: relative;
+    z-index: 100; 
+}
+.slider {
+    position: relative;
+    height: 31.25rem;
+}
+.slide_container {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    position: relative;
+    height: 31.25rem;
+}
+.slides, .control_nav, .direction_nav {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+} 
+.slides {
+    position: relative;
+}
+.slide {
+    transition: opacity 0.5s;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+}
+.slide.active {
+    opacity: 1;
+}
+.direction_nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -24px;
+}
+.direction_nav li {
+    width: 17px;
+    height: 48px;
+    background-image: url(../img/top-slider/arrow_w.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.direction_nav li:hover {
+    opacity: 1;
+}
+.direction_nav .before {
+    background-position: left top;
+    left: 15px;
+    top: 0;
+}
+.direction_nav .next {
+    background-position: right top;
+    right: 15px;
+    top: 0;
+}
+.control_nav {
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+    width: 100%;
+    z-index: 20;
+}
+.control_nav li {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(116,125,144,0.5);
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.control_nav li:hover {
+    background: rgba(116,125,144,1);
+}
+.control_nav li.active {
+    background: rgba(116,125,144,1);
+    width: 10px;
+    height: 10px;
+}
+.slide_content {
+    height: 31.25rem;
+    margin: 0 auto;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+.slide_caption {
+    position: absolute;
+    font-size: 1.125rem;
+    text-align: center;
+    bottom: 30px;
+    right: 15px;
+    left: 15px;
+}
+.slide_name {
+    display: block;
+    font-weight: 600;
+}
+.slide_location {
+    display: block;
+}
+.direction_nav_wrap {
+    height: 31.25rem;
+    position: relative;
+    z-index: 10;
+}
+
+
+//
+// Form
+//---------------------------
+.header_wrap {
+    position: relative;
+}
+.hfilter {
+    background: @head-filter-background;
+    padding: 1px 10px; 
+    margin: auto;
+}
+.form_item {
+    margin: 10px 0;
+}
+.form_control {
+    width: 100%;
+    font-size: 1rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    border-width: 0px;
+    background: #ffffff;
+    padding-left: 0.5rem;
+    padding-right: 0.4rem;
+}
+.btn {
+    height: 2.25rem;
+    font-size: 1rem;
+    font-family: @btn-font;
+    padding-left: 1.25rem; 
+    padding-right: 1.25rem; 
+}
+.btn.__warning {
+    background: @warning;
+    color: #ffffff;
+    font-weight: 600;
+    border-width: 0px;
+    border-radius: 0.4rem; 
+}

@@ -2002,6 +2002,10 @@ body {
   padding: 0 10px;
   margin: auto;
 }
+.container.__wide {
+  width: 100%;
+  padding: 0;
+}
 .logo {
   display: block;
   width: 140px;
@@ -2015,6 +2019,8 @@ body {
 .menu_wrap {
   background: #fff;
   min-height: 42px;
+  position: relative;
+  z-index: 200;
 }
 .menu {
   margin: 0;
@@ -2079,6 +2085,7 @@ body {
 #lang-button {
   font-size: 0.875rem;
   margin: 0.6rem 0 0 2.5rem;
+  float: left;
 }
 #lang-button .ui-icon-triangle-1-s {
   right: 8px;
@@ -2140,6 +2147,159 @@ body {
 .lang_ico.__es {
   background-image: url(../img/flags/ES.png);
 }
+.banner {
+  position: relative;
+  z-index: 100;
+}
+.slider {
+  position: relative;
+  height: 31.25rem;
+}
+.slide_container {
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+  position: relative;
+  height: 31.25rem;
+}
+.slides,
+.control_nav,
+.direction_nav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.slides {
+  position: relative;
+}
+.slide {
+  transition: opacity 0.5s;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+}
+.slide.active {
+  opacity: 1;
+}
+.direction_nav {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -24px;
+}
+.direction_nav li {
+  width: 17px;
+  height: 48px;
+  background-image: url(../img/top-slider/arrow_w.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.direction_nav li:hover {
+  opacity: 1;
+}
+.direction_nav .before {
+  background-position: left top;
+  left: 15px;
+  top: 0;
+}
+.direction_nav .next {
+  background-position: right top;
+  right: 15px;
+  top: 0;
+}
+.control_nav {
+  position: absolute;
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+  z-index: 20;
+}
+.control_nav li {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(116, 125, 144, 0.5);
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.control_nav li:hover {
+  background: #747d90;
+}
+.control_nav li.active {
+  background: #747d90;
+  width: 10px;
+  height: 10px;
+}
+.slide_content {
+  height: 31.25rem;
+  margin: 0 auto;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  font-weight: 300;
+  color: #fff;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+.slide_caption {
+  position: absolute;
+  font-size: 1.125rem;
+  text-align: center;
+  bottom: 30px;
+  right: 15px;
+  left: 15px;
+}
+.slide_name {
+  display: block;
+  font-weight: 600;
+}
+.slide_location {
+  display: block;
+}
+.direction_nav_wrap {
+  height: 31.25rem;
+  position: relative;
+  z-index: 10;
+}
+.header_wrap {
+  position: relative;
+}
+.hfilter {
+  background: #ffc400;
+  padding: 1px 10px;
+  margin: auto;
+}
+.form_item {
+  margin: 10px 0;
+}
+.form_control {
+  width: 100%;
+  font-size: 1rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  border-width: 0px;
+  background: #ffffff;
+  padding-left: 0.5rem;
+  padding-right: 0.4rem;
+}
+.btn {
+  height: 2.25rem;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.btn.__warning {
+  background: #e9213f;
+  color: #ffffff;
+  font-weight: 600;
+  border-width: 0px;
+  border-radius: 0.4rem;
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   html {
@@ -2153,6 +2313,7 @@ body {
     width: 216px;
   }
   .menu_wrap {
+    min-height: 3.125rem;
     height: 3.125rem;
   }
   .menu {
@@ -2176,6 +2337,7 @@ body {
     border-bottom: none;
     white-space: nowrap;
     padding: 0.75rem 1rem;
+    height: 3.125rem;
   }
   .menu_inner {
     position: absolute;
@@ -2191,6 +2353,32 @@ body {
   }
   .menu_btn {
     display: none;
+  }
+  .slide_caption {
+    display: inline-block;
+    text-align: left;
+    right: 15px;
+    left: auto;
+  }
+  .header_wrap {
+    height: 31.25rem;
+  }
+  .hfilter_wrap {
+    position: absolute;
+    top: 50%;
+    z-index: 200;
+    width: 100%;
+  }
+  .hfilter {
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 92%;
+  }
+  .form.__horizontal .form_item {
+    float: left;
+  }
+  .form.__horizontal .form_item + .form_item {
+    padding-left: 0.5rem;
   }
 }
 /* Medium devices (desktops, 992px and up) */

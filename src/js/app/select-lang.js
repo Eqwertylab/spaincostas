@@ -19,6 +19,13 @@ $(document).ready(function() {
 			})
 				.appendTo( li );
 			return li.appendTo( ul );
+		},
+		_renderMenu: function( ul, items ) {
+			var that = this;
+			$.each( items, function( index, item ) {
+				that._renderItemData( ul, item );
+			});
+			$(ul).parent().css('z-index', '300');
 		}
 	});
 	$( "#lang" )

@@ -2048,6 +2048,24 @@ body {
 .menu .__open > .menu_inner {
   display: block;
 }
+.menu .__container > a {
+  position: relative;
+  padding-right: 0.5rem;
+}
+.menu .__container > a:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+  content: "\f107";
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  margin-top: -1rem;
+}
 .menu_inner {
   display: none;
   margin: 0;
@@ -2194,7 +2212,7 @@ body {
   background-repeat: no-repeat;
   position: absolute;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 .direction_nav li:hover {
   opacity: 1;
@@ -2221,16 +2239,16 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(116, 125, 144, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
 }
 .control_nav li:hover {
-  background: #747d90;
+  background: #ffffff;
 }
 .control_nav li.active {
-  background: #747d90;
+  background: #ffffff;
   width: 10px;
   height: 10px;
 }
@@ -2270,11 +2288,19 @@ body {
 }
 .hfilter {
   background: #ffc400;
-  padding: 1px 10px;
+  padding: 0px 0.4rem;
   margin: auto;
 }
+.hfilter:before,
+.hfilter:after {
+  content: " ";
+  display: table;
+}
+.hfilter:after {
+  clear: both;
+}
 .form_item {
-  margin: 10px 0;
+  margin: 0.4rem 0;
 }
 .form_control {
   width: 100%;
@@ -2283,15 +2309,141 @@ body {
   border-radius: 0.5rem;
   border-width: 0px;
   background: #ffffff;
-  padding-left: 0.5rem;
+  padding-left: 0.4rem;
   padding-right: 0.4rem;
+  outline: none;
+}
+.custom_select {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  border-width: 0px;
+  background: #ffffff;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  outline: none;
+}
+.custom_select.__open {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.custom_select span.ui-selectmenu-text {
+  padding: 0.45rem 0;
+}
+.custom_select .ui-icon {
+  right: 8px;
+  text-indent: 0;
+  margin-top: -0.4375rem;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.custom_select .ui-icon:before {
+  content: "\f0d7";
+}
+.custom_select_menu {
+  background: #ffffff;
+  z-index: 300;
+  border-radius: 0 0 0.5rem 0.5rem;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+.custom_select_menu .ui-menu .ui-state-focus,
+.custom_select_menu .ui-menu .ui-state-active {
+  margin: 0;
+}
+.custom_select_menu li:hover {
+  background: #ffc400;
+}
+.custom_select_menu .ui-state-disabled:hover {
+  background: #f0f0f0;
+}
+.custom_select_menu .ui-menu-item {
+  outline: none;
+}
+.custom_select_menu .ui-menu-item + .ui-menu-item {
+  border-top: 1px solid #f0f0f0;
+}
+.ui-datepicker {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  z-index: 300 !important;
+  margin: 2px 0;
+  box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.3);
+}
+.ui-datepicker a {
+  color: #000000;
+}
+.ui-datepicker .ui-datepicker-header {
+  margin: 0.5rem 0 0 0;
+}
+.ui-datepicker .ui-corner-all:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+  color: #c9c9ca;
+  text-indent: 0;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.7rem;
+  font-size: 1.5rem;
+}
+.ui-datepicker .ui-corner-all.ui-state-disabled:hover:before {
+  color: #c9c9ca;
+}
+.ui-datepicker .ui-corner-all:hover:before {
+  color: #000000;
+}
+.ui-datepicker .ui-datepicker-prev {
+  cursor: pointer;
+}
+.ui-datepicker .ui-datepicker-prev:before {
+  content: "\f053";
+  right: 0;
+}
+.ui-datepicker .ui-datepicker-next {
+  cursor: pointer;
+}
+.ui-datepicker .ui-datepicker-next:before {
+  content: "\f054";
+  left: 0;
+}
+.ui-datepicker td span {
+  color: #c9c9ca;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+  text-align: center;
+  display: block;
+  border-radius: 50%;
+  line-height: 2.25rem;
+  padding: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+.ui-datepicker td span:hover,
+.ui-datepicker td a:hover {
+  border: 1px solid #ffc400;
+}
+.ui-datepicker .ui-state-active {
+  background: #ffc400;
 }
 .btn {
   height: 2.25rem;
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-decoration: none;
 }
 .btn.__warning {
   background: #e9213f;
@@ -2299,6 +2451,9 @@ body {
   font-weight: 600;
   border-width: 0px;
   border-radius: 0.4rem;
+}
+.btn.__warning:hover {
+  background: #c4132e;
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -2339,11 +2494,19 @@ body {
     padding: 0.75rem 1rem;
     height: 3.125rem;
   }
+  .menu .__container > a {
+    padding-right: 1.5rem;
+  }
+  .menu .__container > a:before {
+    top: 50%;
+    margin-top: -0.5rem;
+  }
   .menu_inner {
     position: absolute;
     background: #ffc400;
     left: 0;
     top: 100%;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   }
   .menu_inner > .menu_item > a {
     font-size: 1.10rem;
@@ -2367,18 +2530,33 @@ body {
     position: absolute;
     top: 50%;
     z-index: 200;
-    width: 100%;
+    margin-top: -1.53125rem;
+    left: 50%;
+    width: 706.56px;
+    margin-left: -353.28px;
   }
   .hfilter {
     border-radius: 0.5rem;
-    width: 100%;
-    max-width: 92%;
+    background: rgba(255, 196, 0, 0.85);
+  }
+  .hfilter_city {
+    width: 26%;
+  }
+  .hfilter_exit,
+  .hfilter_arrival {
+    width: 20%;
+  }
+  .hfilter_count {
+    width: 16%;
+  }
+  .hfilter_button {
+    width: 17%;
   }
   .form.__horizontal .form_item {
     float: left;
   }
   .form.__horizontal .form_item + .form_item {
-    padding-left: 0.5rem;
+    padding-left: 0.4rem;
   }
 }
 /* Medium devices (desktops, 992px and up) */
@@ -2391,5 +2569,12 @@ body {
   }
   .logo {
     margin-top: 0.4375rem;
+  }
+  .hfilter_wrap {
+    width: 920px;
+    margin-left: -460px;
+  }
+  .hfilter_city {
+    width: 27%;
   }
 }

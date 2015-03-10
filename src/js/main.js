@@ -8,6 +8,6 @@ requirejs.config({
 
 requirejs(['jquery','jquery_ui'], function($) {
 
-	requirejs(['app/menu','app/select-lang','app/top-slider']);
+	requirejs(['app/menu','app/select-lang','app/head-slider', 'app/custom-select', 'app/datepicker']);
 
 });

@@ -1,17 +1,20 @@
 $(document).ready(function() {
-  var $menu_btn = $('#menu_btn'),
-      $menu_out = $('#menu'),
-      menu_item = '.menu_item',
-      $menu_items = $(menu_item),
-      menu_inner = '.menu_inner';
+  var $menu_btn = $('#menu_btn'),     // Кнопка открытия меню мобильной версии
+      $menu_out = $('#menu'),         // Внешний блок меню
+      menu_item = '.menu_item',       // Пункт меню
+      $menu_items = $(menu_item),     
+      menu_inner = '.menu_inner';     // Меню второго уровня
+      $menu_wrap = $(menu_inner).closest(menu_item);
 
   // Открытие меню в мобильной версии
   $menu_btn.click(function(event) {
     menu_action();
   });
 
-  // Меню второго уровня
-  $menu_out.children(menu_item).children('a').click(function(event) {
+  $menu_wrap.addClass('__container');
+
+  // Отображение меню второго уровня
+  $menu_wrap.children('a').click(function(event) {
     $this_menu_item = $(this).closest(menu_item);
 
     if($this_menu_item.children(menu_inner).length > 0) {

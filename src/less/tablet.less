@@ -37,6 +37,16 @@ html {
 		    height: 3.125rem;
 		}
 	}
+
+	.__container {
+        &>a {
+        	padding-right: 1.5rem;
+            &:before {
+                top: 50%;
+                margin-top: -0.5rem;
+            }
+        }
+    }
 }
 // Меню второй уровень
 .menu_inner {
@@ -44,6 +54,8 @@ html {
 	background: @link-color;
 	left: 0;
 	top: 100%;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+
 	> .menu_item {
 	    > a {
 		    font-size: 1.10rem;
@@ -72,7 +84,7 @@ html {
 
 
 //
-// Form
+// Header
 //---------------------------
 .header_wrap {
 	height: 31.25rem;
@@ -81,18 +93,41 @@ html {
 	position: absolute;
 	top: 50%;
 	z-index: 200;
-	width: 100%;
+	margin-top: -1.53125rem;
+	left: 50%;
+	width: @head-filter-sm;
+	margin-left: -( @head-filter-sm / 2 );
+	
+	
 }
 .hfilter {
     border-radius: 0.5rem;
-    width: 100%;
-    max-width: 92%;
+    background: fade(@head-filter-background, 85%);
 }
+.hfilter_city {
+	width: 26%;
+}
+.hfilter_exit,
+.hfilter_arrival {
+	width: 20%;
+}
+.hfilter_count {
+	width: 16%;
+}
+.hfilter_button {
+	width: 17%;
+}
+
+
+
+//
+// Form
+//---------------------------
 .form.__horizontal {
     .form_item {
         float: left;
         &+.form_item {
-        	padding-left: 0.5rem;
+        	padding-left: 0.4rem;
         }
     }
 }

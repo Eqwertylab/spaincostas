@@ -80,51 +80,50 @@
 
     <!-- ГОЛОВНОЙ ФИЛЬТЕР -->
     <div class="hfilter_wrap">
-      <div class="container">
-        <div class="hfilter">
-          <form action="" class="form __horizontal">
-            <div class="form_item hfilter_city">
-              <select name="" id="" class="form_control">
-                <option value="">Гольф Пералада</option>
-                <option value="">Барселона</option>
-                <option value="">Кастельдефельс</option>
-                <option value="">Плайа де Кастельдефельс</option>
-                <option value="">Гава</option>
-                <option value="">Порт де ла Сельва</option>
-                <option value="">Калелья</option>
-                <option value="">Ситжес</option>
-              </select>
-            </div>
-            <div class="form_item hfilter_arrival">
-              <input type="text" class="form_control" id="hfilter-arrival">
-            </div>
-            <div class="form_item hfilter_exit">
-              <input type="text" class="form_control" id="hfilter-exit">
-            </div>
-            <div class="form_item hfilter_count">
-              <select name="" id="" class="form_control" id="hfilter-count">
-                <option value="1">1 гость</option>
-                <option value="2">2 гостя</option>
-                <option value="3">3 гостя</option>
-                <option value="4">4 гостя</option>
-                <option value="5">5 гостей</option>
-                <option value="6">6 гостей</option>
-                <option value="7">7 гостей</option>
-                <option value="8">8 гостей</option>
-                <option value="9">9 гостей</option>
-                <option value="10">10 гостей</option>
-                <option value="11">11 гостей</option>
-                <option value="12">12 гостей</option>
-                <option value="13">13 гостей</option>
-                <option value="14">14 гостей</option>
-                <option value="15">15+ гостей</option>
-              </select>
-            </div>
-            <div class="form_item hfilter_button">
-              <input type="submit" class="btn __warning" value="Начать поиск">
-            </div>
-          </form>
-        </div>
+      <div class="hfilter">
+        <form action="" class="form __horizontal">
+          <div class="form_item hfilter_city">
+            <select name="city" class="form_control" id="hfilter-city">
+              <option value="" disabled selected>Выберите город</option>
+              <option value="">Гольф Пералада</option>
+              <option value="">Барселона</option>
+              <option value="">Кастельдефельс</option>
+              <option value="">Плайа де Кастельдефельс</option>
+              <option value="">Гава</option>
+              <option value="">Порт де ла Сельва</option>
+              <option value="">Калелья</option>
+              <option value="">Ситжес</option>
+            </select>
+          </div>
+          <div class="form_item hfilter_arrival">
+            <input name="arrival" type="text" class="form_control form_datapiker" id="hfilter-arrival" placeholder="Дата заезда">
+          </div>
+          <div class="form_item hfilter_exit">
+            <input name="exit" type="text" class="form_control form_datapiker" id="hfilter-exit" placeholder="Дата отъезда">
+          </div>
+          <div class="form_item hfilter_count">
+            <select name="count" class="form_control" id="hfilter-count">
+              <option value="1">1 гость</option>
+              <option value="2">2 гостя</option>
+              <option value="3">3 гостя</option>
+              <option value="4">4 гостя</option>
+              <option value="5">5 гостей</option>
+              <option value="6">6 гостей</option>
+              <option value="7">7 гостей</option>
+              <option value="8">8 гостей</option>
+              <option value="9">9 гостей</option>
+              <option value="10">10 гостей</option>
+              <option value="11">11 гостей</option>
+              <option value="12">12 гостей</option>
+              <option value="13">13 гостей</option>
+              <option value="14">14 гостей</option>
+              <option value="15">15+ гостей</option>
+            </select>
+          </div>
+          <div class="form_item hfilter_button">
+            <input type="submit" class="btn __warning" value="Начать поиск">
+          </div>
+        </form>
       </div>
     </div>
     <!-- / ГОЛОВНОЙ ФИЛЬТЕР -->

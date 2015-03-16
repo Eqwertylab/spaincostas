@@ -517,3 +517,58 @@ body {
         background: darken(@warning, 10%);
     }
 }
+
+
+
+//
+// Фильтр
+//---------------------------
+.filter {
+    float: left;
+    background: @filter-background;
+    border-radius: 0.5rem;
+    width: 190px;
+}
+.filter_name {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: @filter-name-color;
+    font-weight: 600;
+    position: relative;
+    border-bottom: 1px solid lighten(@light-gray, 10%);
+
+    &:before {
+        .fa-icon();
+        content: @fa-var-angle-down;
+        color: @light-gray;
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        margin-top: -0.4375rem;
+    }
+}
+.filter_tool {
+    padding: 0.75rem;
+}
+
+
+
+//
+// Фильтр - слайдер
+//---------------------------
+.filter_slider {
+    
+    &.ui-slider {
+        background: @filter-slider-bg;
+    }
+
+    .ui-slider-range {
+        background: @filter-slider-range-bg;
+    }
+
+    .ui-slider-handle {
+        background: @filter-slider-handle;
+    }
+
+}

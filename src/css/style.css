@@ -2455,6 +2455,48 @@ body {
 .btn.__warning:hover {
   background: #c4132e;
 }
+.filter {
+  float: left;
+  background: #eef1f3;
+  border-radius: 0.5rem;
+  width: 190px;
+}
+.filter_name {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #2f81c1;
+  font-weight: 600;
+  position: relative;
+  border-bottom: 1px solid #e3e3e3;
+}
+.filter_name:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+  content: "\f107";
+  color: #c9c9ca;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  margin-top: -0.4375rem;
+}
+.filter_tool {
+  padding: 0.75rem;
+}
+.filter_slider.ui-slider {
+  background: #b3b3b3;
+}
+.filter_slider .ui-slider-range {
+  background: #ffc400;
+}
+.filter_slider .ui-slider-handle {
+  background: #dedede;
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   html {

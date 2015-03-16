@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Главная страничка</title>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -73,6 +73,22 @@
     </div>
   </nav>
   <!-- ГЛАВНОЕ МЕНЮ -->
+  
+  <!-- КОНТЕНТ СТРАНИЦЫ -->
+  <main class="main_wrap">
+    <div class="container">
+      <aside class="filter">
+        <div class="filter_item">
+          <header class="filter_name">Цена</header>
+          <div class="filter_tool">
+            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            <div class="filter_slider" id="filter_price"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <!-- / КОНТЕНТ СТРАНИЦЫ -->
 
 
   

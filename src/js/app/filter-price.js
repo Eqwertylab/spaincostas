@@ -1,4 +1,4 @@
- $(function() {
+ (function() {
   $( "#filter_price" ).slider({
     range: true,
     min: 3500,
@@ -16,4 +16,4 @@
   $( "#filter_price_value .filter_smax" )
     .text( $( "#filter_price" )
     .slider( "values", 1 ) + "р" );
-})
+})();

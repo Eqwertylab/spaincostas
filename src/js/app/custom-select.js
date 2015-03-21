@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
 
 	$.widget( "custom.baseselect", $.ui.selectmenu, {
 
@@ -23,4 +23,4 @@ $(document).ready(function() {
 		.baseselect(baseselect_option)
 		.baseselect('set_custom_class');
 
-})
+})();

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
 
   var lang = 'RU';
 
@@ -39,4 +39,4 @@ $(document).ready(function() {
 
   customDatepiker('#hfilter-arrival', '#hfilter-exit');
   customDatepiker('#search-arrival', '#search-exit');
-});
+})();

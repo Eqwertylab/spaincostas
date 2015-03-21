@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
 	$.widget( "custom.langselect", $.ui.selectmenu, {
 		setButton: function() {
 			$(this.button)
@@ -40,4 +40,5 @@ $(document).ready(function() {
 		.langselect( "setButton" )
 		.langselect( "menuWidget" )		
 		.addClass( "ui-menu-icons lang-menu" );
-});
+})();
+	

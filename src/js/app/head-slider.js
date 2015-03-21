@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
 
 	var $slides_node = $('.slides'),
       $slides_arr = $('.slide'),
@@ -59,4 +59,4 @@ $(document).ready(function() {
     timer = setTimeout(slide, slide_delay);
   }
 
-})
+})();

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
   var $menu_btn = $('#menu_btn'),     // Кнопка открытия меню мобильной версии
       $menu_out = $('#menu'),         // Внешний блок меню
       menu_item = '.menu_item',       // Пункт меню
@@ -41,4 +41,4 @@ $(document).ready(function() {
     $menu_btn.toggleClass('__open');
     $menu_out.toggleClass('__open');
   }
-});
+})();

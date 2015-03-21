@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Главная страничка</title>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,600,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -74,24 +74,330 @@
   </nav>
   <!-- ГЛАВНОЕ МЕНЮ -->
   
+  <!-- ЗАГОЛОВОК САЙТА -->
+  <header class="header_image __rent"></header>
+  <!-- / ЗАГОЛОВОК САЙТА -->
+
   <!-- КОНТЕНТ СТРАНИЦЫ -->
   <main class="main_wrap">
     <div class="container">
+
+
+      <!-- ФИЛЬТЕР -->
       <aside class="filter">
-        <div class="filter_item">
+
+        <!-- СТОИМОСТЬ -->
+        <div class="filter_node __first">
           <header class="filter_name">Цена</header>
           <div class="filter_tool">
-            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            <div class="filter_svalue" id="filter_price_value">
+              <span class="filter_smin"></span>
+              <span class="filter_smax"></span>
+            </div>
             <div class="filter_slider" id="filter_price"></div>
           </div>
         </div>
+        <!-- / СТОИМОСТЬ -->
+
+        <!-- СПАЛЬНИ -->
+        <div class="filter_node">
+          <header class="filter_name">Спален</header>
+          <div class="filter_tool">
+            <div class="filter_list">
+              <div class="filter_item">
+                <input type="checkbox" id="room-1" value="1" class="form_check"><label for="room-1" class="form_label">1 спальня</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="room-2" value="2" class="form_check"><label for="room-2" class="form_label">2 спальни</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="room-3" value="3" class="form_check"><label for="room-3" class="form_label">3 спальни</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="room-4" value="4" class="form_check"><label for="room-4" class="form_label">4 спальни</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="room-5" value="5" class="form_check"><label for="room-5" class="form_label">5 спален</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / СПАЛЬНИ -->
+
+        <!-- ОПЦИИ -->
+        <div class="filter_node">
+          <header class="filter_name">Опции</header>
+          <div class="filter_tool">
+            <div class="filter_list">
+              <div class="filter_item">
+                <input type="checkbox" id="option-1" value="1" class="form_check"><label for="option-1" class="form_label">Стиральная машина</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-2" value="2" class="form_check"><label for="option-2" class="form_label">Пасудомойка</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-3" value="3" class="form_check"><label for="option-3" class="form_label">Балкон</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-4" value="4" class="form_check"><label for="option-4" class="form_label">Терраса</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-5" value="5" class="form_check"><label for="option-5" class="form_label">Кондиционер</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-6" value="6" class="form_check"><label for="option-6" class="form_label">Мебель</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-7" value="7" class="form_check"><label for="option-7" class="form_label">Холодильник</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-8" value="8" class="form_check"><label for="option-8" class="form_label">Лифт</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-9" value="9" class="form_check"><label for="option-9" class="form_label">Телевизор</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-10" value="10" class="form_check"><label for="option-10" class="form_label">Парковка</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-11" value="11" class="form_check"><label for="option-11" class="form_label">Интернет Wi-Fi</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="option-12" value="12" class="form_check"><label for="option-12" class="form_label">Микровалновка</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / ОПЦИИ -->
+
+        <!-- ПОБЕРЕЖЬЯ -->
+        <div class="filter_node">
+          <header class="filter_name">Побережья</header>
+          <div class="filter_tool">
+            <div class="filter_list">
+              <div class="filter_item">
+                <input type="checkbox" id="coast-1" value="1" class="form_check"><label for="coast-1" class="form_label">Коста Брава</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-2" value="2" class="form_check"><label for="coast-2" class="form_label">Коста Марезме</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-3" value="3" class="form_check"><label for="coast-3" class="form_label">Коста де Барселона</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-4" value="4" class="form_check"><label for="coast-4" class="form_label">Коста дель Гарраф</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-5" value="5" class="form_check"><label for="coast-5" class="form_label">Коста де Валенсия</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / ПОБЕРЕЖЬЯ -->
+
       </aside>
+      <!-- / ФИЛЬТЕР -->
+      
+
+      <section class="search_content">
+      <div class="search_inner">
+
+        <!-- ПОИСК -->
+        <form class="search">
+          <div class="search_row">
+            <div class="search_col_4">
+              <select name="advert-type" class="form_control" id="advert-type">
+                <option value="" disabled selected>Тип объявления</option>
+                <option value="">Продажа</option>
+                <option value="">Аренда</option>
+                <option value="">Краткосрочная аренда</option>
+              </select>
+            </div>
+            <div class="search_col_4">
+              <select name="realty-type" class="form_control" id="realty-type">
+                <option value="" disabled selected>Тип объекта</option>
+                <option value="">Квартира</option>
+                <option value="">Дом</option>
+                <option value="">Студия - Лофт</option>
+                <option value="">Вилла</option>
+                <option value="">Таун хаус</option>
+                <option value="">Апартаменты</option>
+              </select>
+            </div>
+            <div class="search_col_4">
+              <select name="city" class="form_control" id="search-city">
+                <option value="" disabled selected>Город</option>
+                <option value="">Гольф Пералада</option>
+                <option value="">Барселона</option>
+                <option value="">Кастельдефельс</option>
+                <option value="">Плайа де Кастельдефельс</option>
+                <option value="">Гава</option>
+                <option value="">Порт де ла Сельва</option>
+                <option value="">Калелья</option>
+                <option value="">Ситжес</option>
+              </select>
+            </div>
+            <!-- 
+            <div class="search_col_3">
+              <select name="district" class="form_control" id="search-district">
+                <option value="" disabled selected>Город</option>
+                <option value="">Гольф Пералада</option>
+                <option value="">Барселона</option>
+                <option value="">Кастельдефельс</option>
+                <option value="">Плайа де Кастельдефельс</option>
+                <option value="">Гава</option>
+                <option value="">Порт де ла Сельва</option>
+                <option value="">Калелья</option>
+                <option value="">Ситжес</option>
+              </select>
+            </div> 
+            -->
+          </div>
+          <div class="search_row">
+            <div class="search_col_3">
+              <input name="arrival" type="text" class="form_control form_datapiker" id="search-arrival" placeholder="Дата заезда">
+            </div>
+            <div class="search_col_3">
+              <input name="exit" type="text" class="form_control form_datapiker" id="search-exit" placeholder="Дата отъезда">
+            </div>
+            <div class="search_col_3">
+              <select name="count" class="form_control" id="search-count">
+                <option value="1">1 гость</option>
+                <option value="2">2 гостя</option>
+                <option value="3">3 гостя</option>
+                <option value="4">4 гостя</option>
+                <option value="5">5 гостей</option>
+                <option value="6">6 гостей</option>
+                <option value="7">7 гостей</option>
+                <option value="8">8 гостей</option>
+                <option value="9">9 гостей</option>
+                <option value="10">10 гостей</option>
+                <option value="11">11 гостей</option>
+                <option value="12">12 гостей</option>
+                <option value="13">13 гостей</option>
+                <option value="14">14 гостей</option>
+                <option value="15">15+ гостей</option>
+              </select>
+            </div>
+            <div class="search_col_3">
+              <input type="submit" class="btn __warning __wide" value="Поиск">
+            </div>
+          </div>
+        </form>
+        <!-- / ПОИСК -->
+        
+        <!-- РЕЗУЛЬТАТЫ ПОИСКА -->
+        <div class="search_result">
+
+          <div class="realty">
+            <div class="realty_photo">
+              <img src="img/realty_photo.jpg">
+            </div>
+            <div class="realty_details">
+              <div class="realty_col_left">
+                <div class="realty_name">Eurostars Grand Marina G.L</div>
+                <div class="realty_description">
+                  Repellendus iusto nesciunt nobis dicta voluptates aliquam cumque est ipsum possimus obcaecati assumenda, quam fugit, sapiente aliquid.
+                </div>
+                <ul class="realty_option">
+                  <li>Стиральная машина</li>
+                  <li>Пасудомойка</li>
+                  <li>Балкон</li>
+                  <li>Терраса</li>
+                  <li>Кондиционер</li>
+                </ul>
+              </div>
+              <div class="realty_col_right">
+                <div class="realty_price">
+                  <span class="realty_price_1">от</span>
+                  <span class="realty_price_2">2150р.</span>
+                  <span class="realty_price_3">за ночь</span>
+                </div>
+                <a href="" class="realty_link"><i class="fa fa-chevron-right"></i></a>
+              </div>            
+            </div>
+          </div>
+
+          <div class="realty">
+            <div class="realty_photo">
+              <img src="img/realty_photo.jpg">
+            </div>
+            <div class="realty_details">
+              <div class="realty_col_left">
+                <div class="realty_name">Eurostars Grand Marina G.L</div>
+                <div class="realty_description">
+                  Repellendus iusto nesciunt nobis dicta voluptates aliquam cumque est ipsum possimus obcaecati assumenda, quam fugit, sapiente aliquid.
+                </div>
+                <ul class="realty_option">
+                  <li>Стиральная машина</li>
+                  <li>Пасудомойка</li>
+                  <li>Балкон</li>
+                  <li>Терраса</li>
+                  <li>Кондиционер</li>
+                </ul>
+              </div>
+              <div class="realty_col_right">
+                <div class="realty_price">
+                  <span class="realty_price_1">от</span>
+                  <span class="realty_price_2">2150р.</span>
+                  <span class="realty_price_3">за ночь</span>
+                </div>
+                <a href="" class="realty_link"><i class="fa fa-chevron-right"></i></a>
+              </div>            
+            </div>
+          </div>
+
+          <div class="realty">
+            <div class="realty_photo">
+              <img src="img/realty_photo.jpg">
+            </div>
+            <div class="realty_details">
+              <div class="realty_col_left">
+                <div class="realty_name">Eurostars Grand Marina G.L</div>
+                <div class="realty_description">
+                  Repellendus iusto nesciunt nobis dicta voluptates aliquam cumque est ipsum possimus obcaecati assumenda, quam fugit, sapiente aliquid.
+                </div>
+                <ul class="realty_option">
+                  <li>Стиральная машина</li>
+                  <li>Пасудомойка</li>
+                  <li>Балкон</li>
+                  <li>Терраса</li>
+                  <li>Кондиционер</li>
+                </ul>
+              </div>
+              <div class="realty_col_right">
+                <div class="realty_price">
+                  <span class="realty_price_1">от</span>
+                  <span class="realty_price_2">2150р.</span>
+                  <span class="realty_price_3">за ночь</span>
+                </div>
+                <a href="" class="realty_link"><i class="fa fa-chevron-right"></i></a>
+              </div>            
+            </div>
+          </div>
+
+        </div>
+        <!-- / РЕЗУЛЬТАТЫ ПОИСКА -->
+
+        <!-- СТРАНИЦЫ -->
+        <ul class="pagination">
+          <li><a href=""><i class="fa fa-angle-double-left"></i></a></li>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li class="__active"><span>3</span></li>
+          <li><a href="">4</a></li>
+          <li><a href="">5</a></li>
+          <li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
+        </ul>
+        <!-- / СТРАНИЦЫ -->
+        
+      </div>
+      </section>
+      
+
     </div>
   </main>
   <!-- / КОНТЕНТ СТРАНИЦЫ -->
-
-
-  
 
 <!-- Scripts -->
 <script data-main="js/main.js" src="js/require.js"></script>

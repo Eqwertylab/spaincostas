@@ -17,9 +17,13 @@
 			close: function( event, ui ) {
 				$('.custom_select').removeClass('__open')
 			}
+
 		}
 
-	$('#hfilter-city, #hfilter-count, #advert-type, #realty-type, #search-city, #search-count')
+	//
+	// Список селектов
+	// --------------------
+	$( '#hfilter-city, #hfilter-count, #advert-type, #realty-type, #search-city, #search-count')
 		.baseselect(baseselect_option)
 		.baseselect('set_custom_class');
 

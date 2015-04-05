@@ -45,12 +45,57 @@
     '14':'TV Smart',
     '15':'DVD player'
   }
+
+  // Получаем список квартир
   $.getJSON( "testdata/apartlist.json", function( data ) {
+    window.App = {};
+    App.apartment = data['apartment'];
+    apartrender( App.apartment, 2 );
+  });
 
-    var items = '';
+  function apartrender( data, set_page ) {
 
-    $.each( data["apartment"], function( key, val ) {
-      // items.push( "<div class='realty' id='" + key + "'>" + val.name + "</div>" );
+    var limit = 2;                           // Лимит квартир на странице
+    var answer = render( data, limit, set_page );
+
+    // Добавляем квартиры в DOM
+    $('#search_result').html(answer[0]);
+    $('#pagination').html(answer[1]);
+
+  }
+
+  //
+  // INP:
+  // data (array) - массив с квартирами
+  // limit (number) - кол-во квартир на странице
+  // set_page (number) - выбраная страница
+  //
+  // OUT:
+  // (array) - [0] рендер страниц и [1] постраничной навигации 
+  // ------------------
+  function render( data, limit, set_page ) {
+
+    var items = '';                         // Квартиры
+    var page_nav = '';                      // Постраничная навигация
+    var count = data.length;                // Кол-во квартир
+    var pages = Math.ceil(count / limit);   // Кол-во страниц
+    var last_page_el = count % limit;       // Кол-во квартир на последней странице
+
+    set_page = set_page || 1;                      // Если страница не указана показываем первую
+    set_page = set_page > pages ? pages : set_page // Если указана страница > pages устанавливаем последню
+    set_page = set_page < 0     ? 1     : set_page // Если указана страница < 0 устанавливаем первую
+
+    var first_el = limit * set_page - (limit); // Первая квартира на странице
+    var last_el = limit * set_page - 1;        // Последняя квартира на странице
+
+    if( set_page == pages ) {
+      last_el = first_el + last_page_el - 1;
+    }
+
+    // Перебираем нужное кол-во квартир
+    for (var key = first_el; key <= last_el; key++) {
+
+      val = data[key];
 
       // Блок с именем
       var name =  "<div class='realty_name'>" + val.name + "</div>";
@@ -99,8 +144,31 @@
                     '</div>' +
                   '</div>';
       items += block;
-    });
-    $('#search_result').html(items);
+
+    };
+
+    // Постраничная навигация
+    page_nav += set_page > 1 ?  '<li><a href="'+ (set_page - 1) +'"><i class="fa fa-angle-double-left"></i></a></li>' : '<li><span><i class="fa fa-angle-double-left"></i></span></li>';
+    for (var i = 1; i <= pages; i++) {
+      if( !(i == set_page) ) {
+        page_nav += '<li><a href="'+ i +'">'+ i +'</a></li>';
+      } else {
+        page_nav += '<li class="__active"><span>'+ i +'</span></li>';
+      }
+    };
+    page_nav += set_page < pages ? '<li><a href="'+ ( Number(set_page) + 1) +'"><i class="fa fa-angle-double-right"></i></a></li>' : '<li><span><i class="fa fa-angle-double-right"></i></span></li>';
+
+    var answer = [ items, page_nav ];
+    return answer;
+
+  }
+
+  $('#pagination').on('click', 'a', function(event) {
+
+    event.preventDefault();
+    var page = $(this).attr('href');
+    apartrender( App.apartment, page );
+
   });
 
 })();

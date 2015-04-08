@@ -1,26 +1,6 @@
 (function() {
 
-  //
-  // Фильтр стоимости
-  // --------------------
-  $( "#filter_price" ).slider({
-    range: true,
-    min: 3500,
-    max: 15500,
-    values: [ 5200, 12200 ],
-    slide: function( event, ui ) {
-      $( "#filter_price_value .filter_smin" ).text( ui.values[ 0 ] + "р" );
-      $( "#filter_price_value .filter_smax" ).text( ui.values[ 1 ] + "р" );
-    }
-  });
-  $( "#filter_price_value .filter_smin" )
-    .text( $( "#filter_price" )
-    .slider( "values", 0 ) + "р" );
-    
-  $( "#filter_price_value .filter_smax" )
-    .text( $( "#filter_price" )
-    .slider( "values", 1 ) + "р" );
-
+  console.log(this);
 
   //
   // Рендер квартир
@@ -46,23 +26,92 @@
     '15':'DVD player'
   }
 
+
   // Получаем список квартир
-  $.getJSON( "testdata/apartlist.json", function( data ) {
-    window.App = {};
-    App.apartment = data['apartment'];
-    apartrender( App.apartment, 2 );
-  });
+  $.getJSON( "testdata/apartlist.json" , function( data ) {
 
-  function apartrender( data, set_page ) {
+    data = data['apartment'];
 
-    var limit = 2;                           // Лимит квартир на странице
-    var answer = render( data, limit, set_page );
+    // Формируем фильтры
+    render_filters( data ); 
 
-    // Добавляем квартиры в DOM
-    $('#search_result').html(answer[0]);
-    $('#pagination').html(answer[1]);
+    // Выводим картиры
+    render( data, 5, 1 );
+
+    // Обработчик пагинации
+    pagination( data );
+
+
+  }); 
+
+  // Обработка кликов постраничной навигации
+  function pagination( data ) {
+
+    $('#pagination').on('click', 'a', function(event) {
+
+      event.preventDefault();
+      var page = $(this).attr('href');
+      render( data , 5, page );
+
+    });
 
   }
+
+  function render_filters( data ) {
+
+    //
+    // Формируем фильтры
+    // --------------------
+
+    //
+    // Фильтр стоимости
+    // --------------------
+    // Определяем мин. и макс. стоимость
+    var data_count = data.length;
+    var min_price = data[0]['price'];
+    var max_price = data[0]['price'];
+    for (var i = 0; i < data_count; i++) {
+
+      if(data[i]['price'] < min_price) {
+        min_price = data[i]['price'];
+      }
+      if(data[i]['price'] > max_price) {
+        max_price = data[i]['price'];
+      }
+
+      // Формируем массив спален
+      
+
+    };
+
+    // Показываем фильтр
+    $( "#filter_price" ).slider({
+      range: true,
+      min: min_price,
+      max: max_price,
+      values: [ min_price, max_price ],
+      slide: function( event, ui ) {
+        $( "#filter_price_value .filter_smin" ).text( ui.values[ 0 ] + "р" );
+        $( "#filter_price_value .filter_smax" ).text( ui.values[ 1 ] + "р" );
+      }
+    });
+    $( "#filter_price_value .filter_smin" )
+      .text( $( "#filter_price" )
+      .slider( "values", 0 ) + "р" );
+      
+    $( "#filter_price_value .filter_smax" )
+      .text( $( "#filter_price" )
+      .slider( "values", 1 ) + "р" );
+
+    //
+    // Фильтры с checkbox
+    // --------------------
+
+
+
+  }
+  
+
 
   //
   // INP:
@@ -78,6 +127,7 @@
     var items = '';                         // Квартиры
     var page_nav = '';                      // Постраничная навигация
     var count = data.length;                // Кол-во квартир
+    var limit = limit || 5;                 // Кол-во квартир на странице
     var pages = Math.ceil(count / limit);   // Кол-во страниц
     var last_page_el = count % limit;       // Кол-во квартир на последней странице
 
@@ -147,28 +197,30 @@
 
     };
 
+
     // Постраничная навигация
-    page_nav += set_page > 1 ?  '<li><a href="'+ (set_page - 1) +'"><i class="fa fa-angle-double-left"></i></a></li>' : '<li><span><i class="fa fa-angle-double-left"></i></span></li>';
-    for (var i = 1; i <= pages; i++) {
-      if( !(i == set_page) ) {
-        page_nav += '<li><a href="'+ i +'">'+ i +'</a></li>';
-      } else {
-        page_nav += '<li class="__active"><span>'+ i +'</span></li>';
-      }
-    };
-    page_nav += set_page < pages ? '<li><a href="'+ ( Number(set_page) + 1) +'"><i class="fa fa-angle-double-right"></i></a></li>' : '<li><span><i class="fa fa-angle-double-right"></i></span></li>';
+    if (count > limit ) {
+      // Before
+      page_nav += set_page > 1 ?  '<li><a href="'+ (set_page - 1) +'"><i class="fa fa-angle-double-left"></i></a></li>' : '<li><span><i class="fa fa-angle-double-left"></i></span></li>';
+      // Pages
+      for (var i = 1; i <= pages; i++) {
+        if( !(i == set_page) ) {
+          page_nav += '<li><a href="'+ i +'">'+ i +'</a></li>';
+        } else {
+          page_nav += '<li class="__active"><span>'+ i +'</span></li>';
+        }
+      };
+      // After
+      page_nav += set_page < pages ? '<li><a href="'+ ( Number(set_page) + 1) +'"><i class="fa fa-angle-double-right"></i></a></li>' : '<li><span><i class="fa fa-angle-double-right"></i></span></li>';
+    }
 
     var answer = [ items, page_nav ];
-    return answer;
+
+    // Добавляем квартиры в DOM
+    $('#search_result').html(answer[0]);
+    $('#pagination').html(answer[1]);
+
 
   }
-
-  $('#pagination').on('click', 'a', function(event) {
-
-    event.preventDefault();
-    var page = $(this).attr('href');
-    apartrender( App.apartment, page );
-
-  });
 
 })();

@@ -2531,6 +2531,13 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+.filter_count {
+  float: right;
+  background: #f4f7f9;
+  color: #c9c9ca;
+  padding: 0 3px;
+  border-radius: 3px;
+}
 .filter_slider.ui-slider {
   background: #b3b3b3;
   height: 5px;

@@ -81,10 +81,35 @@
 
 
       <!-- ФИЛЬТЕР -->
-      <aside class="filter">
+      <aside class="filter" id="filters">
+
+        <!-- ПОБЕРЕЖЬЯ -->
+        <div class="filter_node __first">
+          <header class="filter_name">Побережья</header>
+          <div class="filter_tool">
+            <div class="filter_list">
+              <div class="filter_item">
+                <input type="checkbox" id="coast-1" value="1" class="form_check"><label for="coast-1" class="form_label">Коста Брава</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-2" value="2" class="form_check"><label for="coast-2" class="form_label">Коста Марезме</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-3" value="3" class="form_check"><label for="coast-3" class="form_label">Коста де Барселона</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-4" value="4" class="form_check"><label for="coast-4" class="form_label">Коста дель Гарраф</label>
+              </div>
+              <div class="filter_item">
+                <input type="checkbox" id="coast-5" value="5" class="form_check"><label for="coast-5" class="form_label">Коста де Валенсия</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / ПОБЕРЕЖЬЯ -->
 
         <!-- СТОИМОСТЬ -->
-        <div class="filter_node __first">
+        <div class="filter_node">
           <header class="filter_name">Цена</header>
           <div class="filter_tool">
             <div class="filter_svalue" id="filter_price_value">
@@ -100,7 +125,9 @@
         <div class="filter_node">
           <header class="filter_name">Спален</header>
           <div class="filter_tool">
-            <div class="filter_list">
+            <div class="filter_list" id="bedRoom">
+
+              <!--
               <div class="filter_item">
                 <input type="checkbox" id="room-1" value="1" class="form_check"><label for="room-1" class="form_label">1 спальня</label>
               </div>
@@ -116,6 +143,7 @@
               <div class="filter_item">
                 <input type="checkbox" id="room-5" value="5" class="form_check"><label for="room-5" class="form_label">5 спален</label>
               </div>
+              -->
             </div>
           </div>
         </div>
@@ -167,30 +195,6 @@
         </div>
         <!-- / ОПЦИИ -->
 
-        <!-- ПОБЕРЕЖЬЯ -->
-        <div class="filter_node">
-          <header class="filter_name">Побережья</header>
-          <div class="filter_tool">
-            <div class="filter_list">
-              <div class="filter_item">
-                <input type="checkbox" id="coast-1" value="1" class="form_check"><label for="coast-1" class="form_label">Коста Брава</label>
-              </div>
-              <div class="filter_item">
-                <input type="checkbox" id="coast-2" value="2" class="form_check"><label for="coast-2" class="form_label">Коста Марезме</label>
-              </div>
-              <div class="filter_item">
-                <input type="checkbox" id="coast-3" value="3" class="form_check"><label for="coast-3" class="form_label">Коста де Барселона</label>
-              </div>
-              <div class="filter_item">
-                <input type="checkbox" id="coast-4" value="4" class="form_check"><label for="coast-4" class="form_label">Коста дель Гарраф</label>
-              </div>
-              <div class="filter_item">
-                <input type="checkbox" id="coast-5" value="5" class="form_check"><label for="coast-5" class="form_label">Коста де Валенсия</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- / ПОБЕРЕЖЬЯ -->
 
       </aside>
       <!-- / ФИЛЬТЕР -->
@@ -200,7 +204,7 @@
       <div class="search_inner">
 
         <!-- ПОИСК -->
-        <form class="search">
+        <form class="search" id="search" method="GET" action="testdata/apartlist.json">
           <div class="search_row">
             <div class="search_col_4">
               <select name="advert-type" class="form_control" id="advert-type">

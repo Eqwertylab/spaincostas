@@ -1,7 +1,5 @@
 (function() {
 
-  console.log(this);
-
   //
   // Рендер квартир
   // --------------------
@@ -26,8 +24,40 @@
     '15':'DVD player'
   }
 
+  $('#search').submit(function(event) {
+    event.preventDefault();
+    var data_submit = $(this).serialize();
+    var url_submit = $(this).attr('action'); 
+    var method_submit = $(this).attr('method'); 
+    $.ajax({
+      url: url_submit,
+      type: method_submit,
+      dataType: 'json',
+      data: data_submit
+    })
+    .done(function(data) {
+      data = data['apartment'];
+
+      // Формируем фильтры
+      render_filters( data ); 
+
+      // Выводим картиры
+      render( data, 5, 1 );
+
+      // Обработчик пагинации
+      pagination( data );
+
+      // Обработка фильтров
+      action_filters( data );
+    })
+    .fail(function() {
+      alert("Error");
+    })
+    
+  });
 
   // Получаем список квартир
+  /*
   $.getJSON( "testdata/apartlist.json" , function( data ) {
 
     data = data['apartment'];
@@ -41,8 +71,11 @@
     // Обработчик пагинации
     pagination( data );
 
+    // Обработка фильтров
+    action_filters( data );
 
   }); 
+  */
 
   // Обработка кликов постраничной навигации
   function pagination( data ) {
@@ -59,7 +92,7 @@
 
   function render_filters( data ) {
 
-    //
+    // --------------------
     // Формируем фильтры
     // --------------------
 
@@ -70,21 +103,66 @@
     var data_count = data.length;
     var min_price = data[0]['price'];
     var max_price = data[0]['price'];
+
+    //
+    // Фильтры с checkbox
+    // --------------------
+    var bedRoomArr = {};
+    var coastArr = {};
+    var zoneArr = {};
+
     for (var i = 0; i < data_count; i++) {
 
+      // Фильтр стоимости
       if(data[i]['price'] < min_price) {
         min_price = data[i]['price'];
       }
       if(data[i]['price'] > max_price) {
         max_price = data[i]['price'];
+      }     
+
+      // Фильтры с checkbox
+      var val = data[i];
+
+      // Спален
+      var key = val['bedRoom'];
+      if(!bedRoomArr[key]) {
+        bedRoomArr[key] = {};
+        bedRoomArr[key].count = 1;
+      } else {
+        bedRoomArr[key].count = bedRoomArr[key].count + 1;
       }
 
-      // Формируем массив спален
-      
+      // Побережья
+      var key = val['coastid'];
+      if(coastArr[key] == undefined) {
+        coastArr[key] = 1;
+      } else {
+        coastArr[key] = coastArr[key] + 1;
+      }
+
+      // Районы
+      var key = val['zoneid'];
+      if(zoneArr[key] == undefined) {
+        zoneArr[key] = 1;
+      } else {
+        zoneArr[key] = zoneArr[key] + 1;
+      }
 
     };
 
-    // Показываем фильтр
+
+    // --------------------
+    // Отображаем фильтры
+    // --------------------
+
+    render_filter_Price(min_price, max_price)
+    render_filter_bedRoom(bedRoomArr);
+
+  }
+
+  // Показываем фильтр цена
+  function render_filter_Price(min_price, max_price) {
     $( "#filter_price" ).slider({
       range: true,
       min: min_price,
@@ -102,15 +180,72 @@
     $( "#filter_price_value .filter_smax" )
       .text( $( "#filter_price" )
       .slider( "values", 1 ) + "р" );
+  }
 
-    //
-    // Фильтры с checkbox
-    // --------------------
+  // Показываем фильтр спальни
+  function render_filter_bedRoom(bedRoomArr) {
+    var filters = '';
+    for (var room in bedRoomArr) {
 
+      switch(+room) {
+        case 1:
+          bedRoomArr[room].postfix = 'Спальня';
+          break;
+        case 2:
+        case 3:
+        case 4:
+          bedRoomArr[room].postfix = 'Спальни';
+          break;
+        default:
+          bedRoomArr[room].postfix = 'Спален';
+          break;
+      }
 
+      filters += '<div class="filter_item">';
+      filters += '<input type="checkbox" id="room-' + room + '" value="' + room + '" class="form_check">';
+      filters += '<label for="room-' + room + '" class="form_label">' + room + ' ' + bedRoomArr[room].postfix + '</label>';
+      filters += '<span class="filter_count">' + bedRoomArr[room].count + '</span>';
+      filters += '</div>';
 
+    };
+    $(filters).appendTo('#bedRoom');
   }
   
+  // Обработчики фильтров
+  function action_filters( data ) {
+    var mod_data = {};
+    $('#filters').on('change', '.form_check', function() {
+      mod_data = JSON.parse( JSON.stringify( data ) );
+      mod_data = action_filter_bedRoom( mod_data );
+      console.log(mod_data);
+      console.log(data);
+    });
+    
+  }
+
+  // Обработчики фильтра спальни
+  function action_filter_bedRoom( data ) {
+      
+    // Получаем значения выбранных пунктов фильтра
+    var elements = $('#bedRoom').find('.form_check:checked');
+    if(!elements.length) return data;
+    var param = {};
+    for (var i = elements.length - 1; i >= 0; i--) {
+      param[elements[i].value] = 1;
+    };
+
+    // Модифицируем объект с квартирами
+    for (var i = data.length - 1; i >= 0; i--) {
+      if(param[data[i]["bedRoom"]]) {
+        data[i]["display"] = 1; 
+      } else {
+        data[i]["display"] = 0;
+      }
+    };
+
+    return data;
+
+  }
 
 
   //

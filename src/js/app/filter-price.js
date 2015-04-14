@@ -23,7 +23,7 @@
     '14':'TV Smart',
     '15':'DVD player'
   }
-
+ /*
   $('#search').submit(function(event) {
     event.preventDefault();
     var data_submit = $(this).serialize();
@@ -55,10 +55,10 @@
     })
     
   });
+  */
 
   // Получаем список квартир
-  /*
-  $.getJSON( "testdata/apartlist.json" , function( data ) {
+  $.getJSON( "testdata/apartlist.json?1234567" , function( data ) {
 
     data = data['apartment'];
 
@@ -68,14 +68,10 @@
     // Выводим картиры
     render( data, 5, 1 );
 
-    // Обработчик пагинации
-    pagination( data );
-
     // Обработка фильтров
     action_filters( data );
 
   }); 
-  */
 
   // Обработка кликов постраничной навигации
   function pagination( data ) {
@@ -208,7 +204,7 @@
       filters += '</div>';
 
     };
-    $(filters).appendTo('#bedRoom');
+    $('#bedRoom').html(filters);
   }
   
   // Обработчики фильтров
@@ -217,10 +213,8 @@
     $('#filters').on('change', '.form_check', function() {
       mod_data = JSON.parse( JSON.stringify( data ) );
       mod_data = action_filter_bedRoom( mod_data );
-      console.log(mod_data);
-      console.log(data);
+      render( mod_data, '', 1 );
     });
-    
   }
 
   // Обработчики фильтра спальни
@@ -228,22 +222,26 @@
       
     // Получаем значения выбранных пунктов фильтра
     var elements = $('#bedRoom').find('.form_check:checked');
+
+    // Если ничего не выбрано переходим к следующему
     if(!elements.length) return data;
+
+    // Определяем параметры 
     var param = {};
     for (var i = elements.length - 1; i >= 0; i--) {
       param[elements[i].value] = 1;
     };
 
+    var mod_data = [];
+    var mod_i = 0;
     // Модифицируем объект с квартирами
     for (var i = data.length - 1; i >= 0; i--) {
       if(param[data[i]["bedRoom"]]) {
-        data[i]["display"] = 1; 
-      } else {
-        data[i]["display"] = 0;
+        mod_data[mod_i++] = data[i];
       }
     };
 
-    return data;
+    return mod_data;
 
   }
 
@@ -264,18 +262,18 @@
     var count = data.length;                // Кол-во квартир
     var limit = limit || 5;                 // Кол-во квартир на странице
     var pages = Math.ceil(count / limit);   // Кол-во страниц
-    var last_page_el = count % limit;       // Кол-во квартир на последней странице
+    var last_page_el = (count % limit) || limit;       // Кол-во квартир на последней странице
 
     set_page = set_page || 1;                      // Если страница не указана показываем первую
     set_page = set_page > pages ? pages : set_page // Если указана страница > pages устанавливаем последню
     set_page = set_page < 0     ? 1     : set_page // Если указана страница < 0 устанавливаем первую
 
-    var first_el = limit * set_page - (limit); // Первая квартира на странице
-    var last_el = limit * set_page - 1;        // Последняя квартира на странице
+    var last_el = limit * set_page - 1;         // Последняя квартира на странице
+    var first_el = limit * set_page - limit;    // Первая квартира на странице
 
     if( set_page == pages ) {
       last_el = first_el + last_page_el - 1;
-    }
+    }    
 
     // Перебираем нужное кол-во квартир
     for (var key = first_el; key <= last_el; key++) {
@@ -355,7 +353,8 @@
     $('#search_result').html(answer[0]);
     $('#pagination').html(answer[1]);
 
-
+    // Регистрируем обработчик пагинации
+    pagination( data );
   }
 
 })();

@@ -4,7 +4,7 @@
     {
       "bedRoom":1,
       "price":670,
-      "option":"0",
+      "option":"2,6",
       "star":2,
       "longitude":41.3881,
       "bathRoom":1,
@@ -46,7 +46,7 @@
     {
       "bedRoom":1,
       "price":819,
-      "option":"0,1,2,3,7,9,11,14,15",
+      "option":"1,2,3,7,8,9,11,14,15",
       "star":4,
       "longitude":41.3887,
       "bathRoom":1,
@@ -130,7 +130,7 @@
     {
       "bedRoom":2,
       "price":1740,
-      "option":"0,1,2,3,7,9,11,15",
+      "option":"0,1,2,3,7,5,9,11,15",
       "star":4,
       "longitude":41.3888,
       "bathRoom":2,
